@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HelperMate — Manage your household with mutual respect. Schedule, tasks, wallet, and MOM compliance for Singapore employers and helpers.">
+<meta property="og:title" content="HelperMate — Smart Household Management">
+<meta property="og:description" content="All-in-one app for Singapore employers and helpers. Schedule, tasks, wallet, MOM compliance.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://helpermate.app">
+<title>HelperMate — Smart Household Management for Singapore</title>
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--mint-50:#F0FBF9;--mint-100:#D1F5EE;--mint-200:#A3EBE0;--mint-300:#6DD8CA;--mint-400:#4ECDC4;--mint-500:#2DB5A6;--mint-600:#26A69A;--mint-700:#1E8C82;--mint-800:#166B64;--mint-900:#0F4A46;
+--yellow-400:#FFD93D;--yellow-500:#F0C420;
+--dark-900:#0F1923;--dark-800:#1A2836;--dark-700:#243442;--dark-600:#37474F;--dark-500:#546E7A;--dark-400:#78909C;--dark-300:#9BB0BA;--dark-200:#B0BEC5;--dark-100:#CFD8DC;--dark-50:#ECEFF1;
+--white:#FFFFFF;--off-white:#F8FDFB;--section-bg:#F5FAF8;
+--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--radius-full:9999px;
+--shadow-sm:0 1px 3px rgba(15,25,35,0.04);--shadow-md:0 4px 16px rgba(15,25,35,0.06);--shadow-lg:0 8px 32px rgba(15,25,35,0.08);--shadow-xl:0 16px 48px rgba(15,25,35,0.10);
+--font-display:'Outfit',sans-serif;--font-body:'Nunito',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--dark-700);background:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button{cursor:pointer;border:none;font-family:inherit}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 0;transition:all .3s;background:rgba(255,255,255,0)}
+.nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(15,25,35,.06);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:700}
+.nav-logo img{width:36px;height:36px;border-radius:9px}
+.nav-logo .helper{color:var(--mint-500)}.nav-logo .mate{color:var(--dark-600)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:15px;font-weight:600;color:var(--dark-500);transition:color .2s}
+.nav-links a:hover{color:var(--mint-500)}
+.nav-cta{background:var(--mint-400);color:var(--white)!important;padding:10px 24px;border-radius:var(--radius-full);font-weight:700!important;font-size:14px!important;transition:all .3s;box-shadow:0 2px 12px rgba(78,205,196,.3)}
+.nav-cta:hover{background:var(--mint-500);transform:translateY(-1px);box-shadow:0 4px 20px rgba(78,205,196,.4)}
+.nav-mobile-toggle{display:none;background:none;padding:8px}
+.nav-mobile-toggle span{display:block;width:24px;height:2px;background:var(--dark-600);margin:5px 0;border-radius:2px}
+
+/* HERO */
+.hero{padding:140px 0 100px;background:linear-gradient(170deg,var(--off-white) 0%,var(--mint-50) 40%,var(--white) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(78,205,196,.08) 0%,transparent 70%);border-radius:50%}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-content{animation:fadeUp .8s ease both}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--mint-100);color:var(--mint-700);font-size:13px;font-weight:700;padding:6px 16px;border-radius:var(--radius-full);margin-bottom:24px}
+.hero-badge .dot{width:6px;height:6px;background:var(--mint-500);border-radius:50%;animation:pulse 2s infinite}
+.hero h1{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1.1;color:var(--dark-800);margin-bottom:20px;letter-spacing:-1px}
+.hero h1 .highlight{color:var(--mint-500);position:relative}
+.hero h1 .highlight::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:8px;background:var(--mint-200);opacity:.5;border-radius:4px;z-index:-1}
+.hero p{font-size:18px;color:var(--dark-400);line-height:1.7;margin-bottom:36px;max-width:480px}
+.hero-buttons{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--mint-400);color:var(--white);padding:14px 32px;border-radius:var(--radius-full);font-size:16px;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:all .3s;box-shadow:0 4px 20px rgba(78,205,196,.3)}
+.btn-primary:hover{background:var(--mint-500);transform:translateY(-2px);box-shadow:0 6px 28px rgba(78,205,196,.4)}
+.btn-secondary{background:var(--white);color:var(--dark-600);padding:14px 28px;border-radius:var(--radius-full);font-size:16px;font-weight:700;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--dark-100);transition:all .3s}
+.btn-secondary:hover{border-color:var(--mint-400);color:var(--mint-600);transform:translateY(-2px)}
+.btn-arrow{display:inline-block;transition:transform .2s}
+.btn-primary:hover .btn-arrow,.btn-secondary:hover .btn-arrow{transform:translateX(3px)}
+
+/* PHONE MOCKUP */
+.hero-visual{animation:fadeUp .8s .2s ease both;position:relative}
+.hero-phone-mockup{width:340px;margin:0 auto;position:relative}
+.phone-frame{background:var(--white);border-radius:36px;padding:12px;box-shadow:var(--shadow-xl),0 0 0 1px rgba(0,0,0,.04);position:relative;z-index:2}
+.phone-screen{background:linear-gradient(180deg,var(--mint-50) 0%,var(--white) 100%);border-radius:26px;overflow:hidden;aspect-ratio:9/16;display:flex;flex-direction:column}
+.phone-notch{width:80px;height:24px;background:var(--dark-900);border-radius:20px;margin:12px auto 0}
+.phone-app-content{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px}
+.phone-greeting{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--dark-800)}
+.phone-greeting span{color:var(--mint-500)}
+.phone-card{background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--shadow-sm);border:1px solid var(--dark-50)}
+.phone-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.phone-card-title{font-size:11px;font-weight:700;color:var(--dark-400);text-transform:uppercase;letter-spacing:.5px}
+.phone-card-badge{font-size:9px;font-weight:700;padding:2px 8px;border-radius:var(--radius-full)}
+.badge-green{background:var(--mint-100);color:var(--mint-700)}.badge-yellow{background:#FFF3D0;color:#B8860B}
+.phone-card-value{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--dark-800)}
+.phone-card-sub{font-size:11px;color:var(--dark-300);margin-top:2px}
+.phone-task-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--dark-50)}
+.phone-task-row:last-child{border-bottom:none}
+.phone-task-check{width:18px;height:18px;border:2px solid var(--mint-400);border-radius:50%;flex-shrink:0}
+.phone-task-check.done{background:var(--mint-400);border-color:var(--mint-400)}
+.phone-task-text{font-size:11px;font-weight:600;color:var(--dark-700);flex:1}
+.phone-task-time{font-size:10px;color:var(--dark-300)}
+
+.float-card{position:absolute;background:var(--white);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-lg);z-index:3;border:1px solid rgba(0,0,0,.04)}
+.float-card-1{top:40px;left:-40px;animation:float 4s ease-in-out infinite}
+.float-card-2{bottom:80px;right:-30px;animation:float 4s 1s ease-in-out infinite}
+.float-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:6px}
+.float-label{font-size:11px;font-weight:700;color:var(--dark-600)}
+.float-value{font-size:10px;color:var(--dark-300)}
+
+/* LANGUAGE BAR */
+.lang-bar{padding:40px 0;background:var(--white);border-top:1px solid var(--dark-50);border-bottom:1px solid var(--dark-50)}
+.lang-bar-inner{text-align:center}
+.lang-bar-label{font-size:13px;font-weight:600;color:var(--dark-300);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.lang-flags{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.lang-item{text-align:center;font-size:12px;font-weight:600;color:var(--dark-400)}
+.lang-item span{display:block;font-size:28px;margin-bottom:4px}
+
+/* BENEFITS */
+.benefits{padding:100px 0;background:var(--off-white)}
+.section-header{text-align:center;margin-bottom:60px}
+.section-eyebrow{font-size:13px;font-weight:700;color:var(--mint-500);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:40px;font-weight:800;color:var(--dark-800);line-height:1.15;margin-bottom:16px;letter-spacing:-.5px}
+.section-subtitle{font-size:17px;color:var(--dark-400);max-width:560px;margin:0 auto;line-height:1.7}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.benefit-card{background:var(--white);border-radius:var(--radius-lg);padding:36px 28px;border:1px solid var(--dark-50);transition:all .4s;position:relative;overflow:hidden}
+.benefit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mint-400),var(--mint-300));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.benefit-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:var(--mint-200)}
+.benefit-card:hover::before{transform:scaleX(1)}
+.benefit-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.benefit-icon.mint{background:var(--mint-100)}.benefit-icon.yellow{background:#FFF3D0}.benefit-icon.blue{background:#E3F2FD}
+.benefit-title{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--dark-800);margin-bottom:10px}
+.benefit-desc{font-size:15px;color:var(--dark-400);line-height:1.7}
+
+/* FEATURES */
+.features{padding:100px 0;background:var(--white)}
+.feature-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:80px}
+.feature-row:last-child{margin-bottom:0}
+.feature-row.reverse .feature-visual{order:-1}
+.feature-mockup{background:var(--mint-50);border-radius:var(--radius-xl);padding:32px;position:relative;overflow:hidden}
+.feature-mockup::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(78,205,196,.15) 0%,transparent 70%);border-radius:50%}
+.feature-screen{background:var(--white);border-radius:16px;padding:24px;box-shadow:var(--shadow-md)}
+.feature-screen-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--dark-50)}
+.feature-screen-row:last-child{border-bottom:none}
+.feature-screen-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.feature-screen-text{flex:1}
+.feature-screen-label{font-size:13px;font-weight:700;color:var(--dark-700)}
+.feature-screen-value{font-size:12px;color:var(--dark-300)}
+.feature-screen-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:var(--radius-full)}
+.feature-eyebrow{font-size:12px;font-weight:700;color:var(--mint-500);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.feature-title{font-family:var(--font-display);font-size:34px;font-weight:800;color:var(--dark-800);line-height:1.15;margin-bottom:16px;letter-spacing:-.5px}
+.feature-desc{font-size:16px;color:var(--dark-400);line-height:1.7;margin-bottom:24px}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.feature-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--dark-600);font-weight:500}
+.feature-list .check{width:22px;height:22px;background:var(--mint-100);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+
+/* CTA */
+.cta{padding:100px 0;background:linear-gradient(135deg,var(--mint-500) 0%,var(--mint-700) 100%);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}
+.cta-inner{text-align:center;position:relative;z-index:1}
+.cta h2{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--white);margin-bottom:16px;letter-spacing:-.5px}
+.cta p{font-size:18px;color:rgba(255,255,255,.85);margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:var(--white);color:var(--mint-600);padding:16px 36px;border-radius:var(--radius-full);font-size:16px;font-weight:800;display:inline-flex;align-items:center;gap:8px;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,0,0,.15)}
+
+/* FOOTER */
+.footer{padding:60px 0 30px;background:var(--dark-900);color:var(--dark-200)}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand{max-width:280px}
+.footer-brand .nav-logo{margin-bottom:16px}
+.footer-brand .helper{color:var(--mint-400)}.footer-brand .mate{color:var(--white)}
+.footer-brand p{font-size:14px;line-height:1.7;color:var(--dark-400)}
+.footer-col h4{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-col ul{list-style:none}.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:14px;color:var(--dark-400);transition:color .2s}
+.footer-col a:hover{color:var(--mint-400)}
+.footer-bottom{padding-top:24px;border-top:1px solid var(--dark-700);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-bottom p{font-size:13px;color:var(--dark-500)}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+.hero-inner{grid-template-columns:1fr;text-align:center}.hero p{margin:0 auto 36px}.hero-buttons{justify-content:center}.hero-visual{display:none}.hero h1{font-size:40px}
+.benefits-grid{grid-template-columns:repeat(2,1fr)}.feature-row{grid-template-columns:1fr;gap:40px}.feature-row.reverse .feature-visual{order:0}
+.footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+.nav-links{display:none}.nav-mobile-toggle{display:block}
+.hero{padding:120px 0 60px}.hero h1{font-size:32px}.hero p{font-size:16px}
+.section-title{font-size:30px}.benefits-grid{grid-template-columns:1fr}.feature-title{font-size:26px}.cta h2{font-size:30px}
+.footer-inner{grid-template-columns:1fr}.lang-flags{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+<div class="nav-inner">
+<a href="/" class="nav-logo">
+<img src="/images/icon.png" alt="HelperMate">
+<span><span class="helper">Helper</span><span class="mate">Mate</span></span>
+</a>
+<ul class="nav-links">
+<li><a href="#benefits">Benefits</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="/privacy">Privacy</a></li>
+<li><a href="/terms">Terms</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.myhelper.my_helper_sg" class="nav-cta">Get Started Free</a></li>
+</ul>
+<button class="nav-mobile-toggle" onclick="this.classList.toggle('active')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-badge"><span class="dot"></span>Free during launch — all features included</div>
+<h1>Manage your household with <span class="highlight">mutual respect</span></h1>
+<p>All-in-one app to coordinate schedules, track tasks, manage expenses, and stay on top of MOM compliance — built for Singapore employers and helpers.</p>
+<div class="hero-buttons">
+<a href="https://play.google.com/store/apps/details?id=com.myhelper.my_helper_sg" class="btn-primary">Get on Google Play <span class="btn-arrow">→</span></a>
+<a href="#features" class="btn-secondary">See Features <span class="btn-arrow">→</span></a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-phone-mockup">
+<div class="float-card float-card-1">
+<div class="float-icon" style="background:var(--mint-100)">🏛️</div>
+<div class="float-label">Work Permit</div>
+<div class="float-value">Renewal in 30 days</div>
+</div>
+<div class="float-card float-card-2">
+<div class="float-icon" style="background:#FFF3D0">✅</div>
+<div class="float-label">Tasks</div>
+<div class="float-value">12/17 completed</div>
+</div>
+<div class="phone-frame">
+<div class="phone-screen">
+<div style="padding:14px 16px 0"><div class="phone-notch"></div></div>
+<div class="phone-app-content">
+<div class="phone-greeting">Good morning, <span>Boss</span> 👋</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div class="phone-card" style="background:linear-gradient(135deg,var(--mint-700),var(--mint-500));border:none">
+<div class="phone-card-title" style="color:rgba(255,255,255,.7)">Petty Cash</div>
+<div class="phone-card-value" style="color:#fff">$120.50</div>
+<div class="phone-card-sub" style="color:rgba(255,255,255,.6)">Last top-up: Mar 5</div>
+</div>
+<div class="phone-card">
+<div class="phone-card-header">
+<div class="phone-card-title">Progress</div>
+<span class="phone-card-badge badge-green">On track</span>
+</div>
+<div class="phone-card-value">12/17</div>
+<div class="phone-card-sub">Tasks today</div>
+</div>
+</div>
+<div class="phone-card">
+<div class="phone-card-header"><div class="phone-card-title">Upcoming Tasks</div></div>
+<div class="phone-task-row"><div class="phone-task-check done"></div><div class="phone-task-text">Wake up baby, change diaper</div><div class="phone-task-time">6:30</div></div>
+<div class="phone-task-row"><div class="phone-task-check done"></div><div class="phone-task-text">Prepare breakfast</div><div class="phone-task-time">7:00</div></div>
+<div class="phone-task-row"><div class="phone-task-check"></div><div class="phone-task-text">Feed baby breakfast</div><div class="phone-task-time">7:30</div></div>
+<div class="phone-task-row"><div class="phone-task-check"></div><div class="phone-task-text">Clean kitchen</div><div class="phone-task-time">8:00</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="lang-bar">
+<div class="container">
+<div class="lang-bar-inner">
+<div class="lang-bar-label">Your helper's language, built in</div>
+<div class="lang-flags">
+<div class="lang-item"><span>🇬🇧</span>English</div>
+<div class="lang-item"><span>🇮🇩</span>Bahasa</div>
+<div class="lang-item"><span>🇵🇭</span>Tagalog</div>
+<div class="lang-item"><span>🇲🇲</span>Myanmar</div>
+<div class="lang-item"><span>🇨🇳</span>中文</div>
+<div class="lang-item"><span>🇹🇭</span>ไทย</div>
+<div class="lang-item"><span>🇻🇳</span>Tiếng Việt</div>
+<div class="lang-item"><span>🇲🇾</span>Malay</div>
+<div class="lang-item"><span>🇰🇭</span>ខ្មែរ</div>
+<div class="lang-item"><span>🇱🇦</span>ລາວ</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+<div class="container">
+<div class="section-header animate-on-scroll">
+<div class="section-eyebrow">Why HelperMate?</div>
+<h2 class="section-title">Everything you need,<br>all in one place</h2>
+<p class="section-subtitle">Stop juggling between notes, spreadsheets, and WhatsApp. HelperMate brings all your household management into one app.</p>
+</div>
+<div class="benefits-grid">
+<div class="benefit-card animate-on-scroll">
+<div class="benefit-icon mint">📋</div>
+<h3 class="benefit-title">Schedule & Tasks</h3>
+<p class="benefit-desc">Create weekday, Saturday, and Sunday schedules. Tasks auto-generate daily so your helper always knows what's next.</p>
+</div>
+<div class="benefit-card animate-on-scroll">
+<div class="benefit-icon yellow">💰</div>
+<h3 class="benefit-title">Wallet & Expenses</h3>
+<p class="benefit-desc">Track petty cash top-ups and expenses. Snap receipts with built-in OCR. Every dollar is accounted for.</p>
+</div>
+<div class="benefit-card animate-on-scroll">
+<div class="benefit-icon blue">🏛️</div>
+<h3 class="benefit-title">MOM Compliance</h3>
+<p class="benefit-desc">Never miss a Work Permit renewal, medical exam, or passport expiry. Automatic alerts at 90, 30, and 7 days.</p>
+</div>
+<div class="benefit-card animate-on-scroll">
+<div class="benefit-icon mint">🤝</div>
+<h3 class="benefit-title">Household Linking</h3>
+<p class="benefit-desc">Connect with your helper via a simple invite code. Both see the same schedule and tasks in real time.</p>
+</div>
+<div class="benefit-card animate-on-scroll">
+<div class="benefit-icon yellow">🌏</div>
+<h3 class="benefit-title">10 Languages</h3>
+<p class="benefit-desc">English, Bahasa Indonesia, Tagalog, Myanmar, Chinese, Thai, Vietnamese, Malay, Khmer, and Lao.</p>
+</div>
+<div class="benefit-card animate-on-scroll">
+<div class="benefit-icon blue">🔒</div>
+<h3 class="benefit-title">Secure & Private</h3>
+<p class="benefit-desc">Your data is encrypted and access-controlled. Only household members can see your information. PDPA compliant.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+<div class="container">
+<div class="section-header animate-on-scroll">
+<div class="section-eyebrow">Features</div>
+<h2 class="section-title">Built for Singapore<br>employers & helpers</h2>
+<p class="section-subtitle">Designed for the unique needs of managing a household with a Foreign Domestic Worker in Singapore.</p>
+</div>
+
+<div class="feature-row animate-on-scroll">
+<div class="feature-content">
+<div class="feature-eyebrow">Dashboard</div>
+<h3 class="feature-title">Your household<br>at a glance</h3>
+<p class="feature-desc">See everything that matters on one screen — today's tasks, petty cash balance, progress, and upcoming reminders.</p>
+<ul class="feature-list">
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Real-time task progress tracking</li>
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Petty cash balance at a glance</li>
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Helper connection status</li>
+</ul>
+</div>
+<div class="feature-visual">
+<div class="feature-mockup">
+<div class="feature-screen">
+<div class="feature-screen-row">
+<div class="feature-screen-icon" style="background:var(--mint-100)">📅</div>
+<div class="feature-screen-text"><div class="feature-screen-label">Today's Schedule</div><div class="feature-screen-value">17 tasks · Weekday</div></div>
+<span class="feature-screen-tag badge-green">Active</span>
+</div>
+<div class="feature-screen-row">
+<div class="feature-screen-icon" style="background:#FFF3D0">💰</div>
+<div class="feature-screen-text"><div class="feature-screen-label">Petty Cash</div><div class="feature-screen-value">$120.50 · Last top-up Mar 5</div></div>
+<span class="feature-screen-tag badge-green">OK</span>
+</div>
+<div class="feature-screen-row">
+<div class="feature-screen-icon" style="background:#E3F2FD">🏛️</div>
+<div class="feature-screen-text"><div class="feature-screen-label">Work Permit</div><div class="feature-screen-value">Expires Mar 15, 2027</div></div>
+<span class="feature-screen-tag" style="background:#FFEBEE;color:#C62828">30 days</span>
+</div>
+<div class="feature-screen-row">
+<div class="feature-screen-icon" style="background:var(--mint-100)">🏥</div>
+<div class="feature-screen-text"><div class="feature-screen-label">6-Month Medical</div><div class="feature-screen-value">Last: Nov 2025</div></div>
+<span class="feature-screen-tag badge-green">OK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="feature-row reverse animate-on-scroll">
+<div class="feature-content">
+<div class="feature-eyebrow">MOM Compliance</div>
+<h3 class="feature-title">Never miss a<br>deadline again</h3>
+<p class="feature-desc">HelperMate tracks Work Permit renewals, 6-month medical exams, and passport expiry. Get automatic alerts at 90, 30, and 7 days before each deadline.</p>
+<ul class="feature-list">
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Work Permit expiry tracking</li>
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>6-month medical exam reminders</li>
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Passport expiry alerts</li>
+<li><span class="check"><svg viewBox="0 0 12 12"><path d="M2,6 L5,9 L10,3" stroke="#2DB5A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Rest day recording</li>
+</ul>
+</div>
+<div class="feature-visual">
+<div class="feature-mockup" style="background:#FFF9E6">
+<div class="feature-screen">
+<div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark-800);margin-bottom:16px">🔔 MOM Compliance Alerts</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:10px;padding:10px;background:#FFEBEE;border-radius:10px">
+<span style="font-size:20px">⚠️</span>
+<div><div style="font-size:13px;font-weight:700;color:#C62828">Work Permit Renewal</div><div style="font-size:11px;color:#E57373">Due in 30 days · Apr 15</div></div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px;background:#FFF3D0;border-radius:10px">
+<span style="font-size:20px">🏥</span>
+<div><div style="font-size:13px;font-weight:700;color:#B8860B">Medical Examination</div><div style="font-size:11px;color:#DEAB3A">Due in 60 days · May 15</div></div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--mint-50);border-radius:10px">
+<span style="font-size:20px">📘</span>
+<div><div style="font-size:13px;font-weight:700;color:var(--mint-700)">Passport Expiry</div><div style="font-size:11px;color:var(--mint-500)">Valid until Dec 2027</div></div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px;background:#E3F2FD;border-radius:10px">
+<span style="font-size:20px">🗓️</span>
+<div><div style="font-size:13px;font-weight:700;color:#1565C0">Rest Days This Month</div><div style="font-size:11px;color:#42A5F5">3 of 4 taken · Next: Sunday</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="container">
+<div class="cta-inner">
+<h2>Free during launch</h2>
+<p>All features included. No credit card required. No hidden fees. Helper app is always free.</p>
+<div class="cta-buttons">
+<a href="https://play.google.com/store/apps/details?id=com.myhelper.my_helper_sg" class="btn-white">Get on Google Play <span class="btn-arrow">→</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div class="footer-brand">
+<a href="/" class="nav-logo">
+<img src="/images/icon.png" alt="HelperMate" style="border-radius:9px">
+<span><span class="helper">Helper</span><span class="mate">Mate</span></span>
+</a>
+<p>A household management app built for Singapore employers and helpers. By TEMFARMING (UEN: 53508432C).</p>
+</div>
+<div class="footer-col">
+<h4>Product</h4>
+<ul>
+<li><a href="#benefits">Benefits</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="/subscription">Pricing</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<ul>
+<li><a href="/privacy">Privacy Policy</a></li>
+<li><a href="/terms">Terms of Service</a></li>
+<li><a href="/subscription">Subscription Policy</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Support</h4>
+<ul>
+<li><a href="mailto:support@helpermate.app">support@helpermate.app</a></li>
+<li><a href="mailto:dpo@helpermate.app">dpo@helpermate.app</a></li>
+<li><a href="mailto:privacy@helpermate.app">privacy@helpermate.app</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 TEMFARMING. All rights reserved.</p>
+<p>Made in Singapore 🇸🇬</p>
+</div>
+</div>
+</footer>
+
+<script>
+// Scroll nav
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+// Animate on scroll
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.animate-on-scroll').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
