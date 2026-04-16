@@ -1,0 +1,7 @@
+# helpermate.app robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /blog/admin/
+
+Sitemap: https://helpermate.app/sitemap.xml
