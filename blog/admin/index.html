@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — HelperMate Blog</title>
+<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--mint-50:#F0FBF9;--mint-100:#D1F5EE;--mint-200:#A3EBE0;--mint-300:#6DD8CA;--mint-400:#4ECDC4;--mint-500:#2DB5A6;--mint-600:#26A69A;--mint-700:#1E8C82;
+--dark-900:#0F1923;--dark-800:#1A2836;--dark-700:#243442;--dark-600:#37474F;--dark-500:#546E7A;--dark-400:#78909C;--dark-300:#9BB0BA;--dark-200:#B0BEC5;--dark-100:#CFD8DC;--dark-50:#ECEFF1;
+--white:#FFFFFF;--off-white:#F8FDFB;
+--danger:#E53935;--danger-bg:#FFEBEE;
+--warning:#F57C00;--warning-bg:#FFF3E0;
+--success:#43A047;--success-bg:#E8F5E9;
+--radius-sm:8px;--radius-md:12px;--radius-lg:18px;--radius-full:9999px;
+--font-display:'Outfit',sans-serif;--font-body:'Nunito',sans-serif;--font-mono:'SF Mono',Menlo,Consolas,monospace;
+}
+body{font-family:var(--font-body);color:var(--dark-700);background:var(--off-white);line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--mint-600);text-decoration:none}a:hover{text-decoration:underline}
+button{cursor:pointer;border:none;font-family:inherit}
+img{max-width:100%;display:block}
+
+/* Top Bar */
+.topbar{background:var(--white);border-bottom:1px solid var(--dark-50);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:18px;font-weight:700}
+.topbar-logo img{width:30px;height:30px;border-radius:8px}
+.topbar-logo .helper{color:var(--mint-500)}.topbar-logo .mate{color:var(--dark-600)}
+.topbar-logo .admin-tag{font-size:10px;background:var(--dark-700);color:var(--white);padding:2px 8px;border-radius:var(--radius-full);font-weight:700;letter-spacing:1px;margin-left:6px}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.topbar-user{font-size:13px;color:var(--dark-500);font-weight:600}
+.btn{padding:9px 18px;border-radius:var(--radius-full);font-size:14px;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--mint-400);color:var(--white);box-shadow:0 2px 10px rgba(78,205,196,.3)}
+.btn-primary:hover{background:var(--mint-500);transform:translateY(-1px)}
+.btn-secondary{background:var(--white);color:var(--dark-600);border:1.5px solid var(--dark-100)}
+.btn-secondary:hover{border-color:var(--mint-400);color:var(--mint-600)}
+.btn-danger{background:var(--danger-bg);color:var(--danger);border:1.5px solid #FFCDD2}
+.btn-danger:hover{background:var(--danger);color:var(--white);border-color:var(--danger)}
+.btn-ghost{background:transparent;color:var(--dark-500);padding:8px 12px;font-size:13px}
+.btn-ghost:hover{background:var(--dark-50);color:var(--dark-700)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* Container */
+.admin-container{max-width:1240px;margin:0 auto;padding:32px 24px}
+
+/* Login Screen */
+.login-screen{min-height:calc(100vh - 56px);display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.login-card{background:var(--white);border-radius:var(--radius-lg);padding:40px;max-width:440px;width:100%;box-shadow:0 8px 32px rgba(15,25,35,.08);border:1px solid var(--dark-50)}
+.login-card h1{font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--dark-800);margin-bottom:8px;text-align:center}
+.login-card .sub{font-size:14px;color:var(--dark-400);text-align:center;margin-bottom:32px}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:13px;font-weight:700;color:var(--dark-600);margin-bottom:6px}
+.form-input,.form-select,.form-textarea{width:100%;padding:11px 14px;border:1.5px solid var(--dark-100);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;color:var(--dark-800);background:var(--white);transition:all .15s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--mint-400);box-shadow:0 0 0 3px rgba(78,205,196,.15)}
+.form-textarea{resize:vertical;min-height:100px;line-height:1.5}
+.form-help{font-size:12px;color:var(--dark-400);margin-top:4px}
+
+.alert{padding:12px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:16px;font-weight:600}
+.alert-error{background:var(--danger-bg);color:var(--danger);border:1px solid #FFCDD2}
+.alert-warning{background:var(--warning-bg);color:var(--warning);border:1px solid #FFE0B2}
+.alert-success{background:var(--success-bg);color:var(--success);border:1px solid #C8E6C9}
+.alert-info{background:var(--mint-50);color:var(--mint-700);border:1px solid var(--mint-200)}
+
+/* Dashboard — post list */
+.dashboard-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.dashboard-title{font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--dark-800)}
+.dashboard-filters{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.filter-chip{background:var(--white);color:var(--dark-500);padding:7px 14px;border-radius:var(--radius-full);font-size:13px;font-weight:600;border:1.5px solid var(--dark-100);transition:all .2s}
+.filter-chip:hover{border-color:var(--mint-300);color:var(--mint-600)}
+.filter-chip.active{background:var(--mint-400);color:var(--white);border-color:var(--mint-400)}
+.post-list{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--dark-50);overflow:hidden}
+.post-row{padding:18px 20px;border-bottom:1px solid var(--dark-50);display:grid;grid-template-columns:1fr auto auto auto;gap:16px;align-items:center;transition:background .15s}
+.post-row:last-child{border-bottom:none}
+.post-row:hover{background:var(--off-white)}
+.post-info{min-width:0}
+.post-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark-800);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post-slug{font-size:12px;color:var(--dark-400);font-family:var(--font-mono)}
+.post-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.5px}
+.badge-published{background:var(--success-bg);color:var(--success)}
+.badge-draft{background:var(--warning-bg);color:var(--warning)}
+.post-meta-small{font-size:12px;color:var(--dark-400);white-space:nowrap}
+.post-actions{display:flex;gap:6px}
+.post-actions button{padding:6px 12px;font-size:12px}
+.empty-state{padding:60px 20px;text-align:center}
+.empty-state-icon{font-size:48px;margin-bottom:14px;opacity:.4}
+.empty-state-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--dark-600);margin-bottom:6px}
+.empty-state-desc{font-size:14px;color:var(--dark-400);margin-bottom:20px}
+
+/* Editor */
+.editor-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+.editor-title{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--dark-800)}
+.editor-actions{display:flex;gap:8px}
+
+.editor-layout{display:grid;grid-template-columns:340px 1fr;gap:20px}
+.editor-meta{background:var(--white);border-radius:var(--radius-lg);padding:22px;border:1px solid var(--dark-50);height:fit-content;position:sticky;top:88px;max-height:calc(100vh - 104px);overflow-y:auto}
+.editor-meta h3{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark-600);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+
+.editor-main{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--dark-50);overflow:hidden;display:flex;flex-direction:column;min-height:70vh}
+.editor-toolbar{padding:10px 14px;border-bottom:1px solid var(--dark-50);display:flex;gap:4px;flex-wrap:wrap;background:var(--off-white)}
+.toolbar-btn{padding:6px 10px;font-size:13px;font-weight:600;background:transparent;color:var(--dark-600);border-radius:var(--radius-sm);transition:all .15s;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono)}
+.toolbar-btn:hover{background:var(--mint-100);color:var(--mint-700)}
+.toolbar-divider{width:1px;background:var(--dark-100);margin:0 4px}
+.editor-modes{display:flex;gap:2px;margin-left:auto;background:var(--white);border-radius:var(--radius-sm);padding:2px;border:1px solid var(--dark-100)}
+.editor-mode-btn{padding:4px 10px;font-size:12px;font-weight:700;background:transparent;color:var(--dark-500);border-radius:6px;transition:all .15s}
+.editor-mode-btn.active{background:var(--mint-400);color:var(--white)}
+
+.editor-body{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.editor-body.mode-write{grid-template-columns:1fr}
+.editor-body.mode-preview{grid-template-columns:1fr}
+.editor-textarea{padding:20px;border:none;resize:none;font-family:var(--font-mono);font-size:14px;line-height:1.7;color:var(--dark-800);outline:none;background:var(--white)}
+.editor-preview{padding:28px;border-left:1px solid var(--dark-50);overflow-y:auto;font-size:15px;line-height:1.75;color:var(--dark-700);background:var(--white)}
+.editor-body.mode-write .editor-preview{display:none}
+.editor-body.mode-preview .editor-textarea{display:none}
+.editor-body.mode-preview .editor-preview{border-left:none}
+
+/* Preview typography */
+.editor-preview h1{font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--dark-800);margin:.8em 0 .4em}
+.editor-preview h2{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--dark-800);margin:.8em 0 .4em;padding-bottom:8px;border-bottom:2px solid var(--mint-100)}
+.editor-preview h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--dark-800);margin:.8em 0 .3em}
+.editor-preview p{margin-bottom:1em}
+.editor-preview a{color:var(--mint-600);font-weight:600}
+.editor-preview strong{color:var(--dark-800);font-weight:700}
+.editor-preview ul,.editor-preview ol{padding-left:1.5em;margin-bottom:1em}
+.editor-preview li{margin-bottom:.3em}
+.editor-preview blockquote{border-left:3px solid var(--mint-400);background:var(--mint-50);padding:12px 18px;margin:1em 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-style:italic}
+.editor-preview code{background:var(--mint-50);color:var(--mint-800);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:.9em}
+.editor-preview pre{background:var(--dark-900);color:var(--dark-100);padding:14px 18px;border-radius:var(--radius-sm);overflow-x:auto;margin-bottom:1em;font-size:13px}
+.editor-preview pre code{background:transparent;color:inherit;padding:0}
+.editor-preview img{border-radius:var(--radius-sm);margin:.8em 0}
+.editor-preview table{width:100%;border-collapse:collapse;margin-bottom:1em;font-size:14px}
+.editor-preview th,.editor-preview td{padding:8px 12px;border-bottom:1px solid var(--dark-50);text-align:left}
+.editor-preview th{background:var(--mint-50);font-weight:700}
+
+/* Cover image preview */
+.cover-upload{border:2px dashed var(--dark-100);border-radius:var(--radius-sm);padding:16px;text-align:center;cursor:pointer;transition:all .2s;background:var(--off-white)}
+.cover-upload:hover{border-color:var(--mint-400);background:var(--mint-50)}
+.cover-upload.has-image{padding:0;border:none}
+.cover-preview{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-sm);display:block}
+.cover-actions{display:flex;gap:6px;margin-top:8px}
+.cover-upload input[type=file]{display:none}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--dark-800);color:var(--white);padding:14px 22px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;box-shadow:0 8px 32px rgba(0,0,0,.2);z-index:1000;animation:slideIn .3s ease-out;max-width:320px}
+.toast.toast-success{background:var(--success)}
+.toast.toast-error{background:var(--danger)}
+@keyframes slideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,25,35,.6);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:var(--white);border-radius:var(--radius-lg);padding:28px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.modal h3{font-family:var(--font-display);font-size:19px;font-weight:800;color:var(--dark-800);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--dark-500);margin-bottom:20px;line-height:1.6}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}
+
+/* Loading */
+.spinner{width:32px;height:32px;border:3px solid var(--mint-100);border-top-color:var(--mint-500);border-radius:50%;animation:spin 1s linear infinite;margin:40px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Responsive */
+@media(max-width:900px){
+.editor-layout{grid-template-columns:1fr}
+.editor-meta{position:static;max-height:none}
+.editor-body{grid-template-columns:1fr}
+.editor-preview{border-left:none;border-top:1px solid var(--dark-50)}
+}
+@media(max-width:600px){
+.post-row{grid-template-columns:1fr;gap:8px}
+.admin-container{padding:20px 16px}
+}
+
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- Top bar (always visible when authenticated) -->
+<div class="topbar hidden" id="topbar">
+<a href="/" class="topbar-logo">
+<img src="/images/icon.png" alt="HelperMate">
+<span><span class="helper">Helper</span><span class="mate">Mate</span><span class="admin-tag">ADMIN</span></span>
+</a>
+<div class="topbar-right">
+<span class="topbar-user" id="userEmail"></span>
+<button class="btn btn-ghost" id="logoutBtn">Sign out</button>
+</div>
+</div>
+
+<!-- Login Screen -->
+<div class="login-screen" id="loginScreen">
+<div class="login-card">
+<h1>Admin Sign In</h1>
+<p class="sub">HelperMate Blog CMS</p>
+<div class="alert alert-error hidden" id="loginError"></div>
+<form id="loginForm">
+<div class="form-group">
+<label class="form-label" for="loginEmail">Email</label>
+<input type="email" id="loginEmail" class="form-input" required autocomplete="email">
+</div>
+<div class="form-group">
+<label class="form-label" for="loginPassword">Password</label>
+<input type="password" id="loginPassword" class="form-input" required autocomplete="current-password">
+</div>
+<button type="submit" class="btn btn-primary" id="loginBtn" style="width:100%;justify-content:center">Sign in</button>
+</form>
+</div>
+</div>
+
+<!-- Access Denied Screen -->
+<div class="login-screen hidden" id="deniedScreen">
+<div class="login-card">
+<div class="alert alert-error">
+<strong>Access denied.</strong> Your account does not have admin privileges.
+</div>
+<p style="font-size:13px;color:var(--dark-400);text-align:center;margin-bottom:16px">
+Contact the site owner to request admin access.
+</p>
+<button class="btn btn-secondary" id="deniedLogoutBtn" style="width:100%;justify-content:center">Sign out</button>
+</div>
+</div>
+
+<!-- Dashboard: Post List -->
+<main class="admin-container hidden" id="dashboardView">
+<div class="dashboard-header">
+<h1 class="dashboard-title">Blog Posts</h1>
+<button class="btn btn-primary" id="newPostBtn">＋ New Post</button>
+</div>
+<div class="dashboard-filters" id="statusFilters">
+<button class="filter-chip active" data-status="all">All</button>
+<button class="filter-chip" data-status="published">Published</button>
+<button class="filter-chip" data-status="draft">Drafts</button>
+</div>
+<div id="postListContainer">
+<div class="spinner"></div>
+</div>
+</main>
+
+<!-- Editor View -->
+<main class="admin-container hidden" id="editorView">
+<div class="editor-header">
+<h1 class="editor-title" id="editorHeading">New Post</h1>
+<div class="editor-actions">
+<button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+<button class="btn btn-secondary" id="saveDraftBtn">Save Draft</button>
+<button class="btn btn-primary" id="publishBtn">Publish</button>
+</div>
+</div>
+
+<div class="editor-layout">
+
+<!-- Meta sidebar -->
+<aside class="editor-meta">
+<h3>Post Settings</h3>
+
+<div class="form-group">
+<label class="form-label" for="fieldTitle">Title *</label>
+<input type="text" id="fieldTitle" class="form-input" placeholder="Post title" required>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="fieldSlug">URL Slug *</label>
+<input type="text" id="fieldSlug" class="form-input" placeholder="my-post-url" required pattern="[a-z0-9-]+">
+<p class="form-help">Lowercase, hyphens only. URL: /blog/post/<strong id="slugPreview">...</strong></p>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="fieldCategory">Category *</label>
+<select id="fieldCategory" class="form-select" required>
+<option value="">Select category</option>
+<option value="mom-compliance">MOM Compliance</option>
+<option value="household-tips">Household Tips</option>
+<option value="helper-rights">Helper Rights</option>
+<option value="app-updates">App Updates</option>
+</select>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="fieldSubtitle">Subtitle</label>
+<textarea id="fieldSubtitle" class="form-textarea" rows="2" placeholder="Optional subtitle shown under the title"></textarea>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="fieldMetaDesc">Meta Description *</label>
+<textarea id="fieldMetaDesc" class="form-textarea" rows="3" placeholder="SEO description (150-160 chars recommended)" maxlength="200" required></textarea>
+<p class="form-help"><span id="metaCharCount">0</span> / 200 chars</p>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="fieldAuthor">Author</label>
+<input type="text" id="fieldAuthor" class="form-input" value="HelperMate Team">
+</div>
+
+<div class="form-group">
+<label class="form-label">Cover Image</label>
+<label class="cover-upload" id="coverUploadArea">
+<div id="coverPlaceholder">
+<div style="font-size:28px;margin-bottom:6px">🖼️</div>
+<div style="font-size:13px;font-weight:600;color:var(--dark-500)">Click to upload</div>
+<div style="font-size:11px;color:var(--dark-400);margin-top:4px">Recommended: 1600×900px, JPG/PNG</div>
+</div>
+<img id="coverImage" class="cover-preview hidden" alt="Cover">
+<input type="file" id="coverFileInput" accept="image/jpeg,image/png,image/webp">
+</label>
+<div class="cover-actions hidden" id="coverActions">
+<button type="button" class="btn btn-ghost" id="replaceCoverBtn" style="font-size:12px;padding:6px 10px">Replace</button>
+<button type="button" class="btn btn-ghost" id="removeCoverBtn" style="font-size:12px;padding:6px 10px;color:var(--danger)">Remove</button>
+</div>
+</div>
+
+</aside>
+
+<!-- Editor area -->
+<section class="editor-main">
+<div class="editor-toolbar">
+<button class="toolbar-btn" data-md="bold" title="Bold"><strong>B</strong></button>
+<button class="toolbar-btn" data-md="italic" title="Italic"><em>I</em></button>
+<div class="toolbar-divider"></div>
+<button class="toolbar-btn" data-md="h2" title="Heading 2">H2</button>
+<button class="toolbar-btn" data-md="h3" title="Heading 3">H3</button>
+<div class="toolbar-divider"></div>
+<button class="toolbar-btn" data-md="link" title="Link">🔗</button>
+<button class="toolbar-btn" data-md="image" title="Insert Image (upload)" id="insertImageBtn">📷</button>
+<button class="toolbar-btn" data-md="quote" title="Quote">❝</button>
+<button class="toolbar-btn" data-md="code" title="Code">&lt;/&gt;</button>
+<button class="toolbar-btn" data-md="ul" title="Bullet list">•</button>
+<button class="toolbar-btn" data-md="ol" title="Numbered list">1.</button>
+
+<div class="editor-modes">
+<button class="editor-mode-btn active" data-mode="split">Split</button>
+<button class="editor-mode-btn" data-mode="write">Write</button>
+<button class="editor-mode-btn" data-mode="preview">Preview</button>
+</div>
+</div>
+
+<div class="editor-body mode-split" id="editorBody">
+<textarea id="editorTextarea" class="editor-textarea" placeholder="Write your post in Markdown...&#10;&#10;## Section heading&#10;&#10;Paragraph text with **bold** and *italic*.&#10;&#10;- List item&#10;- Another item"></textarea>
+<div id="editorPreview" class="editor-preview"></div>
+</div>
+</section>
+
+</div>
+
+<input type="file" id="inlineImageInput" accept="image/*" style="display:none">
+</main>
+
+<!-- Delete confirmation modal -->
+<div class="modal-overlay hidden" id="deleteModal">
+<div class="modal">
+<h3>Delete this post?</h3>
+<p id="deleteModalBody">This action cannot be undone. The post and its data will be permanently removed.</p>
+<div class="modal-actions">
+<button class="btn btn-secondary" id="deleteCancelBtn">Cancel</button>
+<button class="btn btn-danger" id="deleteConfirmBtn">Delete</button>
+</div>
+</div>
+</div>
+
+<!-- Markdown + Sanitizer -->
+<script src="https://cdn.jsdelivr.net/npm/marked@14.1.3/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+
+<!-- Firebase + App Logic -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+import {
+  getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+import {
+  getFirestore, collection, doc, getDoc, getDocs, setDoc, deleteDoc,
+  query, orderBy, serverTimestamp
+} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+import {
+  getStorage, ref as storageRef, uploadBytes, getDownloadURL, deleteObject
+} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js';
+import { firebaseConfig } from '/blog/firebase-config.js';
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+// ============ STATE ============
+let currentUser = null;
+let currentPost = null;     // null = new post, object = editing
+let currentFilter = 'all';
+let isDirty = false;
+let pendingDeleteId = null;
+
+// ============ AUTH ============
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    showLogin();
+    return;
+  }
+  // Verify admin privileges
+  try {
+    const adminDoc = await getDoc(doc(db, 'admins', user.uid));
+    if (!adminDoc.exists()) {
+      showDenied();
+      return;
+    }
+    currentUser = user;
+    showDashboard();
+    document.getElementById('userEmail').textContent = user.email;
+    loadPosts();
+  } catch (err) {
+    console.error('Admin check failed:', err);
+    showDenied();
+  }
+});
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const btn = document.getElementById('loginBtn');
+  const errEl = document.getElementById('loginError');
+  errEl.classList.add('hidden');
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    // onAuthStateChanged handles the rest
+  } catch (err) {
+    errEl.textContent = parseAuthError(err.code);
+    errEl.classList.remove('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Sign in';
+  }
+});
+
+function parseAuthError(code) {
+  const msgs = {
+    'auth/invalid-credential': 'Invalid email or password.',
+    'auth/invalid-email': 'Invalid email address.',
+    'auth/user-not-found': 'No account found with this email.',
+    'auth/wrong-password': 'Incorrect password.',
+    'auth/too-many-requests': 'Too many attempts. Please try again later.',
+    'auth/network-request-failed': 'Network error. Check your connection.'
+  };
+  return msgs[code] || 'Sign-in failed. Please try again.';
+}
+
+document.getElementById('logoutBtn').addEventListener('click', () => signOut(auth));
+document.getElementById('deniedLogoutBtn').addEventListener('click', () => signOut(auth));
+
+// ============ SCREENS ============
+function showLogin() {
+  document.getElementById('loginScreen').classList.remove('hidden');
+  document.getElementById('deniedScreen').classList.add('hidden');
+  document.getElementById('topbar').classList.add('hidden');
+  document.getElementById('dashboardView').classList.add('hidden');
+  document.getElementById('editorView').classList.add('hidden');
+}
+function showDenied() {
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('deniedScreen').classList.remove('hidden');
+  document.getElementById('topbar').classList.add('hidden');
+  document.getElementById('dashboardView').classList.add('hidden');
+  document.getElementById('editorView').classList.add('hidden');
+}
+function showDashboard() {
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('deniedScreen').classList.add('hidden');
+  document.getElementById('topbar').classList.remove('hidden');
+  document.getElementById('dashboardView').classList.remove('hidden');
+  document.getElementById('editorView').classList.add('hidden');
+  isDirty = false;
+}
+function showEditor() {
+  document.getElementById('dashboardView').classList.add('hidden');
+  document.getElementById('editorView').classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
+
+// ============ POST LIST ============
+let allPosts = [];
+
+async function loadPosts() {
+  const container = document.getElementById('postListContainer');
+  container.innerHTML = '<div class="spinner"></div>';
+  try {
+    const q = query(collection(db, 'blog_posts'), orderBy('updatedAt', 'desc'));
+    const snap = await getDocs(q);
+    allPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderPostList();
+  } catch (err) {
+    console.error('Failed to load posts:', err);
+    container.innerHTML = `<div class="alert alert-error">Failed to load posts: ${err.message}</div>`;
+  }
+}
+
+function renderPostList() {
+  const container = document.getElementById('postListContainer');
+  const filtered = allPosts.filter(p => {
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'published') return p.published === true;
+    if (currentFilter === 'draft') return p.published !== true;
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="post-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <h3 class="empty-state-title">No posts ${currentFilter !== 'all' ? '('+currentFilter+')' : 'yet'}</h3>
+          <p class="empty-state-desc">Click "New Post" to create your first post.</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const rows = filtered.map(p => {
+    const badge = p.published
+      ? '<span class="post-badge badge-published">Published</span>'
+      : '<span class="post-badge badge-draft">Draft</span>';
+    const updated = p.updatedAt?.toDate ? p.updatedAt.toDate() : new Date();
+    const dateStr = updated.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return `
+      <div class="post-row">
+        <div class="post-info">
+          <div class="post-title">${escapeHtml(p.title || '(Untitled)')}</div>
+          <div class="post-slug">/blog/post/${escapeHtml(p.slug || p.id)}</div>
+        </div>
+        ${badge}
+        <div class="post-meta-small">${dateStr}</div>
+        <div class="post-actions">
+          <button class="btn btn-secondary" data-action="edit" data-id="${p.id}">Edit</button>
+          <button class="btn btn-danger" data-action="delete" data-id="${p.id}">Delete</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `<div class="post-list">${rows}</div>`;
+
+  container.querySelectorAll('[data-action]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action;
+      const id = btn.dataset.id;
+      if (action === 'edit') openEditor(id);
+      if (action === 'delete') confirmDelete(id);
+    });
+  });
+}
+
+document.getElementById('statusFilters').addEventListener('click', (e) => {
+  const chip = e.target.closest('.filter-chip');
+  if (!chip) return;
+  document.querySelectorAll('#statusFilters .filter-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  currentFilter = chip.dataset.status;
+  renderPostList();
+});
+
+document.getElementById('newPostBtn').addEventListener('click', () => openEditor(null));
+
+// ============ DELETE ============
+function confirmDelete(id) {
+  const post = allPosts.find(p => p.id === id);
+  pendingDeleteId = id;
+  document.getElementById('deleteModalBody').textContent = `"${post?.title || 'This post'}" will be permanently removed. This cannot be undone.`;
+  document.getElementById('deleteModal').classList.remove('hidden');
+}
+document.getElementById('deleteCancelBtn').addEventListener('click', () => {
+  pendingDeleteId = null;
+  document.getElementById('deleteModal').classList.add('hidden');
+});
+document.getElementById('deleteConfirmBtn').addEventListener('click', async () => {
+  if (!pendingDeleteId) return;
+  try {
+    await deleteDoc(doc(db, 'blog_posts', pendingDeleteId));
+    toast('Post deleted', 'success');
+    document.getElementById('deleteModal').classList.add('hidden');
+    pendingDeleteId = null;
+    loadPosts();
+  } catch (err) {
+    toast('Failed to delete: ' + err.message, 'error');
+  }
+});
+
+// ============ EDITOR ============
+async function openEditor(id) {
+  if (id) {
+    const post = allPosts.find(p => p.id === id);
+    if (!post) return toast('Post not found', 'error');
+    currentPost = post;
+    document.getElementById('editorHeading').textContent = 'Edit Post';
+  } else {
+    currentPost = null;
+    document.getElementById('editorHeading').textContent = 'New Post';
+  }
+  fillEditorForm(currentPost);
+  showEditor();
+  updatePreview();
+  isDirty = false;
+}
+
+function fillEditorForm(post) {
+  document.getElementById('fieldTitle').value = post?.title || '';
+  document.getElementById('fieldSlug').value = post?.slug || '';
+  document.getElementById('fieldCategory').value = post?.category || '';
+  document.getElementById('fieldSubtitle').value = post?.subtitle || '';
+  document.getElementById('fieldMetaDesc').value = post?.metaDescription || '';
+  document.getElementById('fieldAuthor').value = post?.author || 'HelperMate Team';
+  document.getElementById('editorTextarea').value = post?.content || '';
+  updateSlugPreview();
+  updateMetaCount();
+  // Cover image
+  const coverImg = document.getElementById('coverImage');
+  const coverPlaceholder = document.getElementById('coverPlaceholder');
+  const coverActions = document.getElementById('coverActions');
+  const coverUploadArea = document.getElementById('coverUploadArea');
+  if (post?.coverImage) {
+    coverImg.src = post.coverImage;
+    coverImg.classList.remove('hidden');
+    coverPlaceholder.classList.add('hidden');
+    coverActions.classList.remove('hidden');
+    coverUploadArea.classList.add('has-image');
+    coverImg.dataset.url = post.coverImage;
+  } else {
+    coverImg.classList.add('hidden');
+    coverPlaceholder.classList.remove('hidden');
+    coverActions.classList.add('hidden');
+    coverUploadArea.classList.remove('has-image');
+    coverImg.removeAttribute('data-url');
+    coverImg.src = '';
+  }
+}
+
+// Slug live preview
+const slugInput = document.getElementById('fieldSlug');
+const slugPreview = document.getElementById('slugPreview');
+function updateSlugPreview() {
+  const v = slugInput.value.trim();
+  slugPreview.textContent = v || 'your-slug';
+}
+slugInput.addEventListener('input', () => {
+  slugInput.value = slugInput.value.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
+  updateSlugPreview();
+  markDirty();
+});
+
+// Auto-generate slug from title if slug is empty
+document.getElementById('fieldTitle').addEventListener('input', (e) => {
+  markDirty();
+  if (!slugInput.value && !currentPost) {
+    const auto = e.target.value.toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .slice(0, 60);
+    slugInput.value = auto;
+    updateSlugPreview();
+  }
+});
+
+// Meta char count
+const metaDesc = document.getElementById('fieldMetaDesc');
+const metaCount = document.getElementById('metaCharCount');
+function updateMetaCount() { metaCount.textContent = metaDesc.value.length; }
+metaDesc.addEventListener('input', () => { updateMetaCount(); markDirty(); });
+
+// Mark other fields dirty too
+['fieldCategory','fieldSubtitle','fieldAuthor','editorTextarea'].forEach(id => {
+  document.getElementById(id).addEventListener('input', markDirty);
+});
+
+function markDirty() { isDirty = true; }
+
+// Live preview
+const textarea = document.getElementById('editorTextarea');
+const preview = document.getElementById('editorPreview');
+marked.setOptions({ breaks: true, gfm: true });
+function updatePreview() {
+  const raw = marked.parse(textarea.value || '');
+  preview.innerHTML = DOMPurify.sanitize(raw, { ADD_ATTR: ['target', 'rel', 'loading'] });
+}
+let previewTimer;
+textarea.addEventListener('input', () => {
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(updatePreview, 150);
+});
+
+// Editor mode toggle
+document.querySelectorAll('.editor-mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.editor-mode-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const body = document.getElementById('editorBody');
+    body.classList.remove('mode-split','mode-write','mode-preview');
+    body.classList.add('mode-' + btn.dataset.mode);
+    if (btn.dataset.mode !== 'write') updatePreview();
+  });
+});
+
+// Markdown toolbar
+document.querySelectorAll('.toolbar-btn[data-md]').forEach(btn => {
+  btn.addEventListener('click', () => insertMarkdown(btn.dataset.md));
+});
+
+function insertMarkdown(type) {
+  if (type === 'image') {
+    document.getElementById('inlineImageInput').click();
+    return;
+  }
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const selected = textarea.value.slice(start, end);
+  let before = '', after = '', placeholder = '';
+  switch (type) {
+    case 'bold': before = '**'; after = '**'; placeholder = 'bold text'; break;
+    case 'italic': before = '*'; after = '*'; placeholder = 'italic text'; break;
+    case 'h2': before = '\n## '; after = '\n'; placeholder = 'Heading'; break;
+    case 'h3': before = '\n### '; after = '\n'; placeholder = 'Subheading'; break;
+    case 'link': before = '['; after = '](https://)'; placeholder = 'link text'; break;
+    case 'quote': before = '\n> '; after = '\n'; placeholder = 'Quote'; break;
+    case 'code': before = '`'; after = '`'; placeholder = 'code'; break;
+    case 'ul': before = '\n- '; after = '\n'; placeholder = 'list item'; break;
+    case 'ol': before = '\n1. '; after = '\n'; placeholder = 'list item'; break;
+  }
+  const insertText = selected || placeholder;
+  const newText = textarea.value.slice(0, start) + before + insertText + after + textarea.value.slice(end);
+  textarea.value = newText;
+  const caretStart = start + before.length;
+  const caretEnd = caretStart + insertText.length;
+  textarea.focus();
+  textarea.setSelectionRange(caretStart, caretEnd);
+  updatePreview();
+  markDirty();
+}
+
+// Inline image upload
+document.getElementById('inlineImageInput').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = await uploadImage(file);
+  if (url) {
+    const start = textarea.selectionStart;
+    const md = `![${file.name.replace(/\.[^.]+$/, '')}](${url})`;
+    textarea.value = textarea.value.slice(0, start) + md + textarea.value.slice(start);
+    textarea.focus();
+    textarea.setSelectionRange(start + md.length, start + md.length);
+    updatePreview();
+    markDirty();
+    toast('Image uploaded', 'success');
+  }
+  e.target.value = '';
+});
+
+// Cover image upload
+document.getElementById('coverFileInput').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = await uploadImage(file, 'covers/');
+  if (url) {
+    const coverImg = document.getElementById('coverImage');
+    coverImg.src = url;
+    coverImg.dataset.url = url;
+    coverImg.classList.remove('hidden');
+    document.getElementById('coverPlaceholder').classList.add('hidden');
+    document.getElementById('coverActions').classList.remove('hidden');
+    document.getElementById('coverUploadArea').classList.add('has-image');
+    markDirty();
+    toast('Cover uploaded', 'success');
+  }
+  e.target.value = '';
+});
+
+document.getElementById('replaceCoverBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('coverFileInput').click();
+});
+document.getElementById('removeCoverBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  const coverImg = document.getElementById('coverImage');
+  coverImg.classList.add('hidden');
+  coverImg.removeAttribute('data-url');
+  coverImg.src = '';
+  document.getElementById('coverPlaceholder').classList.remove('hidden');
+  document.getElementById('coverActions').classList.add('hidden');
+  document.getElementById('coverUploadArea').classList.remove('has-image');
+  markDirty();
+});
+
+async function uploadImage(file, subpath = 'inline/') {
+  if (file.size > 5 * 1024 * 1024) {
+    toast('Image too large (max 5MB)', 'error');
+    return null;
+  }
+  if (!['image/jpeg','image/png','image/webp','image/gif'].includes(file.type)) {
+    toast('Invalid image type (JPEG/PNG/WebP/GIF only)', 'error');
+    return null;
+  }
+  try {
+    const timestamp = Date.now();
+    const rand = Math.random().toString(36).slice(2, 8);
+    const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_').slice(-40);
+    const path = `blog-images/${subpath}${timestamp}-${rand}-${safeName}`;
+    const ref = storageRef(storage, path);
+    toast('Uploading...', 'info');
+    const snap = await uploadBytes(ref, file);
+    const url = await getDownloadURL(snap.ref);
+    return url;
+  } catch (err) {
+    console.error('Upload failed:', err);
+    toast('Upload failed: ' + err.message, 'error');
+    return null;
+  }
+}
+
+// Save handlers
+document.getElementById('saveDraftBtn').addEventListener('click', () => savePost(false));
+document.getElementById('publishBtn').addEventListener('click', () => savePost(true));
+
+async function savePost(publish) {
+  // Validate
+  const title = document.getElementById('fieldTitle').value.trim();
+  const slug = document.getElementById('fieldSlug').value.trim();
+  const category = document.getElementById('fieldCategory').value;
+  const metaDescription = document.getElementById('fieldMetaDesc').value.trim();
+  const subtitle = document.getElementById('fieldSubtitle').value.trim();
+  const author = document.getElementById('fieldAuthor').value.trim() || 'HelperMate Team';
+  const content = textarea.value;
+  const coverImage = document.getElementById('coverImage').dataset.url || '';
+
+  if (!title) return toast('Title is required', 'error');
+  if (!slug || !/^[a-z0-9-]+$/.test(slug)) return toast('Invalid slug (lowercase letters, numbers, hyphens only)', 'error');
+  if (!category) return toast('Category is required', 'error');
+  if (!metaDescription) return toast('Meta description is required', 'error');
+  if (!content.trim()) return toast('Content cannot be empty', 'error');
+
+  // Check slug uniqueness (when new or changed)
+  if (!currentPost || currentPost.slug !== slug) {
+    const dup = allPosts.find(p => p.slug === slug && p.id !== currentPost?.id);
+    if (dup) return toast(`Slug "${slug}" is already used`, 'error');
+  }
+
+  const publishBtn = document.getElementById('publishBtn');
+  const draftBtn = document.getElementById('saveDraftBtn');
+  publishBtn.disabled = true; draftBtn.disabled = true;
+
+  try {
+    const id = currentPost?.id || slug;
+    const data = {
+      title, slug, category, metaDescription, subtitle, author,
+      content, coverImage,
+      published: publish,
+      updatedAt: serverTimestamp(),
+      authorUid: currentUser.uid,
+      authorEmail: currentUser.email
+    };
+    // Set createdAt on first save
+    if (!currentPost) {
+      data.createdAt = serverTimestamp();
+    } else {
+      // Preserve existing createdAt
+      data.createdAt = currentPost.createdAt || serverTimestamp();
+    }
+    // Set publishedAt when moving from draft → published
+    if (publish && !currentPost?.published) {
+      data.publishedAt = serverTimestamp();
+    } else if (publish && currentPost?.publishedAt) {
+      data.publishedAt = currentPost.publishedAt;
+    }
+
+    await setDoc(doc(db, 'blog_posts', id), data, { merge: false });
+    toast(publish ? 'Post published!' : 'Draft saved', 'success');
+    isDirty = false;
+    await loadPosts();
+    showDashboard();
+  } catch (err) {
+    console.error('Save failed:', err);
+    toast('Save failed: ' + err.message, 'error');
+  } finally {
+    publishBtn.disabled = false; draftBtn.disabled = false;
+  }
+}
+
+// Cancel
+document.getElementById('cancelBtn').addEventListener('click', () => {
+  if (isDirty && !confirm('Discard unsaved changes?')) return;
+  showDashboard();
+});
+
+// Warn on page unload if dirty
+window.addEventListener('beforeunload', (e) => {
+  if (isDirty) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+// ============ UTILS ============
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
+function toast(msg, type = 'info') {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+</script>
+</body>
+</html>
