@@ -1,265 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="HelperMate Blog — Guides and insights for Singapore employers managing domestic helpers. MOM compliance, household tips, helper rights, and app updates.">
-<meta property="og:title" content="HelperMate Blog — Guides for Singapore Employers">
-<meta property="og:description" content="Practical guides on MOM compliance, household management, and building respectful employer-helper relationships in Singapore.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://helpermate.app/blog">
-<title>Blog — HelperMate</title>
-<link rel="icon" type="image/png" href="/images/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="HelperMate Blog — Guides and insights for Singapore employers managing domestic helpers. MOM compliance, household tips, helper rights, and app updates.">
+  <meta property="og:title" content="HelperMate Blog — Guides for Singapore Employers">
+  <meta property="og:description"
+    content="Practical guides on MOM compliance, household management, and building respectful employer-helper relationships in Singapore.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://helpermate.app/blog">
+  <title>Blog — HelperMate</title>
+  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
---mint-50:#F0FBF9;--mint-100:#D1F5EE;--mint-200:#A3EBE0;--mint-300:#6DD8CA;--mint-400:#4ECDC4;--mint-500:#2DB5A6;--mint-600:#26A69A;--mint-700:#1E8C82;--mint-800:#166B64;--mint-900:#0F4A46;
---yellow-400:#FFD93D;--yellow-500:#F0C420;
---dark-900:#0F1923;--dark-800:#1A2836;--dark-700:#243442;--dark-600:#37474F;--dark-500:#546E7A;--dark-400:#78909C;--dark-300:#9BB0BA;--dark-200:#B0BEC5;--dark-100:#CFD8DC;--dark-50:#ECEFF1;
---white:#FFFFFF;--off-white:#F8FDFB;--section-bg:#F5FAF8;
---radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--radius-full:9999px;
---shadow-sm:0 1px 3px rgba(15,25,35,0.04);--shadow-md:0 4px 16px rgba(15,25,35,0.06);--shadow-lg:0 8px 32px rgba(15,25,35,0.08);--shadow-xl:0 16px 48px rgba(15,25,35,0.10);
---font-display:'Outfit',sans-serif;--font-body:'Nunito',sans-serif;
-}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--dark-700);background:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button{cursor:pointer;border:none;font-family:inherit}
-.container{max-width:1140px;margin:0 auto;padding:0 24px}
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 0;transition:all .3s;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(15,25,35,.04)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 24px}
-.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:700}
-.nav-logo img{width:36px;height:36px;border-radius:9px}
-.nav-logo .helper{color:var(--mint-500)}.nav-logo .mate{color:var(--dark-600)}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{font-size:15px;font-weight:600;color:var(--dark-500);transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--mint-500)}
-.nav-cta{background:var(--mint-400);color:var(--white)!important;padding:10px 24px;border-radius:var(--radius-full);font-weight:700!important;font-size:14px!important;transition:all .3s;box-shadow:0 2px 12px rgba(78,205,196,.3)}
-.nav-cta:hover{background:var(--mint-500);transform:translateY(-1px);box-shadow:0 4px 20px rgba(78,205,196,.4)}
-.nav-mobile-toggle{display:none;background:none;padding:8px}
-.nav-mobile-toggle span{display:block;width:24px;height:2px;background:var(--dark-600);margin:5px 0;border-radius:2px}
+    :root {
+      --mint-50: #F0FBF9;
+      --mint-100: #D1F5EE;
+      --mint-200: #A3EBE0;
+      --mint-300: #6DD8CA;
+      --mint-400: #4ECDC4;
+      --mint-500: #2DB5A6;
+      --mint-600: #26A69A;
+      --mint-700: #1E8C82;
+      --mint-800: #166B64;
+      --mint-900: #0F4A46;
+      --yellow-400: #FFD93D;
+      --yellow-500: #F0C420;
+      --dark-900: #0F1923;
+      --dark-800: #1A2836;
+      --dark-700: #243442;
+      --dark-600: #37474F;
+      --dark-500: #546E7A;
+      --dark-400: #78909C;
+      --dark-300: #9BB0BA;
+      --dark-200: #B0BEC5;
+      --dark-100: #CFD8DC;
+      --dark-50: #ECEFF1;
+      --white: #FFFFFF;
+      --off-white: #F8FDFB;
+      --section-bg: #F5FAF8;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 3px rgba(15, 25, 35, 0.04);
+      --shadow-md: 0 4px 16px rgba(15, 25, 35, 0.06);
+      --shadow-lg: 0 8px 32px rgba(15, 25, 35, 0.08);
+      --shadow-xl: 0 16px 48px rgba(15, 25, 35, 0.10);
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Nunito', sans-serif;
+    }
 
-/* HERO */
-.blog-hero{padding:140px 0 60px;background:linear-gradient(170deg,var(--off-white) 0%,var(--mint-50) 40%,var(--white) 100%);position:relative;overflow:hidden}
-.blog-hero::before{content:'';position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(78,205,196,.08) 0%,transparent 70%);border-radius:50%}
-.blog-hero-inner{text-align:center;position:relative;z-index:1}
-.blog-hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--mint-100);color:var(--mint-700);font-size:13px;font-weight:700;padding:6px 16px;border-radius:var(--radius-full);margin-bottom:24px}
-.blog-hero h1{font-family:var(--font-display);font-size:48px;font-weight:800;line-height:1.1;color:var(--dark-800);margin-bottom:16px;letter-spacing:-1px}
-.blog-hero h1 .highlight{color:var(--mint-500)}
-.blog-hero p{font-size:18px;color:var(--dark-400);line-height:1.7;max-width:580px;margin:0 auto}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* CATEGORY FILTER */
-.blog-filter{padding:30px 0;background:var(--white);border-bottom:1px solid var(--dark-50);position:sticky;top:68px;z-index:100;backdrop-filter:blur(10px);background:rgba(255,255,255,.95)}
-.blog-filter-inner{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.filter-chip{background:var(--white);color:var(--dark-500);padding:8px 18px;border-radius:var(--radius-full);font-size:14px;font-weight:600;border:1.5px solid var(--dark-100);transition:all .2s;cursor:pointer}
-.filter-chip:hover{border-color:var(--mint-300);color:var(--mint-600)}
-.filter-chip.active{background:var(--mint-400);color:var(--white);border-color:var(--mint-400);box-shadow:0 2px 12px rgba(78,205,196,.3)}
+    body {
+      font-family: var(--font-body);
+      color: var(--dark-700);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased
+    }
 
-/* BLOG GRID */
-.blog-grid-section{padding:60px 0 100px;background:var(--off-white);min-height:500px}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    a {
+      text-decoration: none;
+      color: inherit
+    }
 
-/* BLOG CARD */
-.blog-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--dark-50);transition:all .3s;cursor:pointer;display:flex;flex-direction:column;height:100%}
-.blog-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--mint-200)}
-.blog-card-cover{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--mint-100),var(--mint-200));position:relative;overflow:hidden}
-.blog-card-cover img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.blog-card:hover .blog-card-cover img{transform:scale(1.05)}
-.blog-card-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:48px;opacity:.4}
-.blog-card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
-.blog-card-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
-.blog-card-category{font-size:11px;font-weight:700;padding:4px 10px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.5px}
-.cat-mom{background:#FFF3D0;color:#B8860B}
-.cat-tips{background:var(--mint-100);color:var(--mint-700)}
-.cat-rights{background:#E3F2FD;color:#1565C0}
-.cat-updates{background:#F3E5F5;color:#7B1FA2}
-.blog-card-date{font-size:12px;color:var(--dark-300);font-weight:500}
-.blog-card-title{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--dark-800);line-height:1.3;margin-bottom:10px;letter-spacing:-.2px}
-.blog-card-excerpt{font-size:14px;color:var(--dark-400);line-height:1.6;margin-bottom:16px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.blog-card-read{font-size:13px;font-weight:700;color:var(--mint-500);display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
-.blog-card:hover .blog-card-read{gap:8px}
+    img {
+      max-width: 100%;
+      display: block
+    }
 
-/* STATES */
-.state-wrapper{grid-column:1/-1;text-align:center;padding:80px 20px}
-.state-icon{font-size:56px;margin-bottom:20px;opacity:.5}
-.state-title{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--dark-700);margin-bottom:8px}
-.state-desc{font-size:15px;color:var(--dark-400);max-width:400px;margin:0 auto}
-.loading-spinner{width:40px;height:40px;border:3px solid var(--mint-100);border-top-color:var(--mint-500);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
-@keyframes spin{to{transform:rotate(360deg)}}
+    button {
+      cursor: pointer;
+      border: none;
+      font-family: inherit
+    }
 
-/* FOOTER */
-.footer{padding:60px 0 30px;background:var(--dark-900);color:var(--dark-200)}
-.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-brand{max-width:280px}
-.footer-brand .nav-logo{margin-bottom:16px}
-.footer-brand .helper{color:var(--mint-400)}.footer-brand .mate{color:var(--white)}
-.footer-brand p{font-size:14px;line-height:1.7;color:var(--dark-400)}
-.footer-col h4{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
-.footer-col ul{list-style:none}.footer-col li{margin-bottom:10px}
-.footer-col a{font-size:14px;color:var(--dark-400);transition:color .2s}
-.footer-col a:hover{color:var(--mint-400)}
-.footer-bottom{padding-top:24px;border-top:1px solid var(--dark-700);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-bottom p{font-size:13px;color:var(--dark-500)}
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
 
-/* RESPONSIVE */
-@media(max-width:1024px){
-.blog-grid{grid-template-columns:repeat(2,1fr)}
-.footer-inner{grid-template-columns:1fr 1fr}
-}
-@media(max-width:768px){
-.nav-links{display:none}.nav-mobile-toggle{display:block}
-.blog-hero{padding:120px 0 40px}
-.blog-hero h1{font-size:34px}
-.blog-hero p{font-size:16px}
-.blog-grid{grid-template-columns:1fr}
-.footer-inner{grid-template-columns:1fr}
-.blog-filter{top:60px}
-}
-</style>
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: all .3s;
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 20px rgba(15, 25, 35, .04)
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px
+    }
+
+    .nav-logo .helper {
+      color: var(--mint-500)
+    }
+
+    .nav-logo .mate {
+      color: var(--dark-600)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark-500);
+      transition: color .2s
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--mint-500)
+    }
+
+    .nav-cta {
+      background: var(--mint-400);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      transition: all .3s;
+      box-shadow: 0 2px 12px rgba(78, 205, 196, .3)
+    }
+
+    .nav-cta:hover {
+      background: var(--mint-500);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(78, 205, 196, .4)
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      padding: 8px
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark-600);
+      margin: 5px 0;
+      border-radius: 2px
+    }
+
+    /* HERO */
+    .blog-hero {
+      padding: 140px 0 60px;
+      background: linear-gradient(170deg, var(--off-white) 0%, var(--mint-50) 40%, var(--white) 100%);
+      position: relative;
+      overflow: hidden
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(78, 205, 196, .08) 0%, transparent 70%);
+      border-radius: 50%
+    }
+
+    .blog-hero-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1
+    }
+
+    .blog-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mint-100);
+      color: var(--mint-700);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      margin-bottom: 24px
+    }
+
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--dark-800);
+      margin-bottom: 16px;
+      letter-spacing: -1px
+    }
+
+    .blog-hero h1 .highlight {
+      color: var(--mint-500)
+    }
+
+    .blog-hero p {
+      font-size: 18px;
+      color: var(--dark-400);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto
+    }
+
+    /* CATEGORY FILTER */
+    .blog-filter {
+      padding: 30px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--dark-50);
+      position: sticky;
+      top: 68px;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, .95)
+    }
+
+    .blog-filter-inner {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .filter-chip {
+      background: var(--white);
+      color: var(--dark-500);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 600;
+      border: 1.5px solid var(--dark-100);
+      transition: all .2s;
+      cursor: pointer
+    }
+
+    .filter-chip:hover {
+      border-color: var(--mint-300);
+      color: var(--mint-600)
+    }
+
+    .filter-chip.active {
+      background: var(--mint-400);
+      color: var(--white);
+      border-color: var(--mint-400);
+      box-shadow: 0 2px 12px rgba(78, 205, 196, .3)
+    }
+
+    /* BLOG GRID */
+    .blog-grid-section {
+      padding: 60px 0 100px;
+      background: var(--off-white);
+      min-height: 500px
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px
+    }
+
+    /* BLOG CARD */
+    .blog-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--dark-50);
+      transition: all .3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--mint-200)
+    }
+
+    .blog-card-cover {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--mint-100), var(--mint-200));
+      position: relative;
+      overflow: hidden
+    }
+
+    .blog-card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s
+    }
+
+    .blog-card:hover .blog-card-cover img {
+      transform: scale(1.05)
+    }
+
+    .blog-card-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      opacity: .4
+    }
+
+    .blog-card-body {
+      padding: 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap
+    }
+
+    .blog-card-category {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: .5px
+    }
+
+    .cat-mom {
+      background: #FFF3D0;
+      color: #B8860B
+    }
+
+    .cat-tips {
+      background: var(--mint-100);
+      color: var(--mint-700)
+    }
+
+    .cat-rights {
+      background: #E3F2FD;
+      color: #1565C0
+    }
+
+    .cat-updates {
+      background: #F3E5F5;
+      color: #7B1FA2
+    }
+
+    .blog-card-date {
+      font-size: 12px;
+      color: var(--dark-300);
+      font-weight: 500
+    }
+
+    .blog-card-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--dark-800);
+      line-height: 1.3;
+      margin-bottom: 10px;
+      letter-spacing: -.2px
+    }
+
+    .blog-card-excerpt {
+      font-size: 14px;
+      color: var(--dark-400);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .blog-card-read {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mint-500);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap .2s
+    }
+
+    .blog-card:hover .blog-card-read {
+      gap: 8px
+    }
+
+    /* STATES */
+    .state-wrapper {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 80px 20px
+    }
+
+    .state-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+      opacity: .5
+    }
+
+    .state-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark-700);
+      margin-bottom: 8px
+    }
+
+    .state-desc {
+      font-size: 15px;
+      color: var(--dark-400);
+      max-width: 400px;
+      margin: 0 auto
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--mint-100);
+      border-top-color: var(--mint-500);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 60px 0 30px;
+      background: var(--dark-900);
+      color: var(--dark-200)
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px
+    }
+
+    .footer-brand {
+      max-width: 280px
+    }
+
+    .footer-brand .nav-logo {
+      margin-bottom: 16px
+    }
+
+    .footer-brand .helper {
+      color: var(--mint-400)
+    }
+
+    .footer-brand .mate {
+      color: var(--white)
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--dark-400)
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px
+    }
+
+    .footer-col ul {
+      list-style: none
+    }
+
+    .footer-col li {
+      margin-bottom: 10px
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: var(--dark-400);
+      transition: color .2s
+    }
+
+    .footer-col a:hover {
+      color: var(--mint-400)
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid var(--dark-700);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--dark-500)
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav-links {
+        display: none
+      }
+
+      .nav-mobile-toggle {
+        display: block
+      }
+
+      .blog-hero {
+        padding: 120px 0 40px
+      }
+
+      .blog-hero h1 {
+        font-size: 34px
+      }
+
+      .blog-hero p {
+        font-size: 16px
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr
+      }
+
+      .blog-filter {
+        top: 60px
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="navbar">
-<div class="nav-inner">
-<a href="/" class="nav-logo">
-<img src="/images/icon.png" alt="HelperMate">
-<span><span class="helper">Helper</span><span class="mate">Mate</span></span>
-</a>
-<ul class="nav-links">
-<li><a href="/#benefits">Benefits</a></li>
-<li><a href="/#features">Features</a></li>
-<li><a href="/blog" class="active">Blog</a></li>
-<li><a href="/privacy">Privacy</a></li>
-<li><a href="https://play.google.com/store/apps/details?id=com.myhelper.my_helper_sg" class="nav-cta">Get Started Free</a></li>
-</ul>
-<button class="nav-mobile-toggle" onclick="this.classList.toggle('active')"><span></span><span></span><span></span></button>
-</div>
-</nav>
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/images/icon.png" alt="HelperMate">
+        <span><span class="helper">Helper</span><span class="mate">Mate</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#benefits">Benefits</a></li>
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.myhelper.my_helper_sg" class="nav-cta">Get
+            Started Free</a></li>
+      </ul>
+      <button class="nav-mobile-toggle"
+        onclick="this.classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="blog-hero">
-<div class="container">
-<div class="blog-hero-inner">
-<div class="blog-hero-badge">📚 HelperMate Blog</div>
-<h1>Guides for <span class="highlight">Singapore employers</span></h1>
-<p>Practical insights on MOM compliance, household management, helper rights, and building respectful employer-helper relationships.</p>
-</div>
-</div>
-</section>
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-hero-inner">
+        <div class="blog-hero-badge">📚 HelperMate Blog</div>
+        <h1>Guides for <span class="highlight">Singapore employers</span></h1>
+        <p>Practical insights on MOM compliance, household management, helper rights, and building respectful
+          employer-helper relationships.</p>
+      </div>
+    </div>
+  </section>
 
-<!-- CATEGORY FILTER -->
-<div class="blog-filter">
-<div class="container">
-<div class="blog-filter-inner" id="filterBar">
-<button class="filter-chip active" data-category="all">All Posts</button>
-<button class="filter-chip" data-category="mom-compliance">MOM Compliance</button>
-<button class="filter-chip" data-category="household-tips">Household Tips</button>
-<button class="filter-chip" data-category="helper-rights">Helper Rights</button>
-<button class="filter-chip" data-category="app-updates">App Updates</button>
-</div>
-</div>
-</div>
+  <!-- CATEGORY FILTER -->
+  <div class="blog-filter">
+    <div class="container">
+      <div class="blog-filter-inner" id="filterBar">
+        <button class="filter-chip active" data-category="all">All Posts</button>
+        <button class="filter-chip" data-category="mom-compliance">MOM Compliance</button>
+        <button class="filter-chip" data-category="household-tips">Household Tips</button>
+        <button class="filter-chip" data-category="helper-rights">Helper Rights</button>
+        <button class="filter-chip" data-category="app-updates">App Updates</button>
+      </div>
+    </div>
+  </div>
 
-<!-- BLOG GRID -->
-<section class="blog-grid-section">
-<div class="container">
-<div class="blog-grid" id="blogGrid">
-<!-- Loading state (default) -->
-<div class="state-wrapper" id="loadingState">
-<div class="loading-spinner"></div>
-<p class="state-desc">Loading posts...</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- BLOG GRID -->
+  <section class="blog-grid-section">
+    <div class="container">
+      <div class="blog-grid" id="blogGrid">
+        <!-- Loading state (default) -->
+        <div class="state-wrapper" id="loadingState">
+          <div class="loading-spinner"></div>
+          <p class="state-desc">Loading posts...</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-<div class="container">
-<div class="footer-inner">
-<div class="footer-brand">
-<a href="/" class="nav-logo">
-<img src="/images/icon.png" alt="HelperMate" style="border-radius:9px">
-<span><span class="helper">Helper</span><span class="mate">Mate</span></span>
-</a>
-<p>A household management app built for Singapore employers and helpers. By TEMFARMING (UEN: 53508432C).</p>
-</div>
-<div class="footer-col">
-<h4>Product</h4>
-<ul>
-<li><a href="/#benefits">Benefits</a></li>
-<li><a href="/#features">Features</a></li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/subscription">Pricing</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Legal</h4>
-<ul>
-<li><a href="/privacy">Privacy Policy</a></li>
-<li><a href="/terms">Terms of Service</a></li>
-<li><a href="/subscription">Subscription Policy</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Support</h4>
-<ul>
-<li><a href="mailto:support@helpermate.app">support@helpermate.app</a></li>
-<li><a href="mailto:dpo@helpermate.app">dpo@helpermate.app</a></li>
-<li><a href="mailto:privacy@helpermate.app">privacy@helpermate.app</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2026 TEMFARMING. All rights reserved.</p>
-<p>Made in Singapore 🇸🇬</p>
-</div>
-</div>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img src="/images/icon.png" alt="HelperMate" style="border-radius:9px">
+            <span><span class="helper">Helper</span><span class="mate">Mate</span></span>
+          </a>
+          <p>A household management app built for Singapore employers and helpers. By TEMFARMING (UEN: 53508432C).</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="/#benefits">Benefits</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/subscription">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/subscription">Subscription Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:support@helpermate.app">support@helpermate.app</a></li>
+            <li><a href="mailto:dpo@helpermate.app">dpo@helpermate.app</a></li>
+            <li><a href="mailto:privacy@helpermate.app">privacy@helpermate.app</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TEMFARMING. All rights reserved.</p>
+        <p>Made in Singapore 🇸🇬</p>
+      </div>
+    </div>
+  </footer>
 
-<!-- FIREBASE + LOGIC -->
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
-import { getFirestore, collection, query, where, orderBy, getDocs } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+  <!-- FIREBASE + LOGIC -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+    import { getFirestore, collection, query, where, orderBy, limit, getDocs } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 
-// Firebase config — will be populated in Phase 3
-import { firebaseConfig } from '/blog/firebase-config.js';
+    // Firebase config — will be populated in Phase 3
+    import { firebaseConfig } from '/blog/firebase-config.js';
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-// Category config
-const CATEGORY_CONFIG = {
-  'mom-compliance': { label: 'MOM Compliance', className: 'cat-mom' },
-  'household-tips': { label: 'Household Tips', className: 'cat-tips' },
-  'helper-rights': { label: 'Helper Rights', className: 'cat-rights' },
-  'app-updates': { label: 'App Updates', className: 'cat-updates' }
-};
+    // Category config
+    const CATEGORY_CONFIG = {
+      'mom-compliance': { label: 'MOM Compliance', className: 'cat-mom' },
+      'household-tips': { label: 'Household Tips', className: 'cat-tips' },
+      'helper-rights': { label: 'Helper Rights', className: 'cat-rights' },
+      'app-updates': { label: 'App Updates', className: 'cat-updates' }
+    };
 
-let allPosts = [];
-let currentCategory = 'all';
+    let allPosts = [];
+    let currentCategory = 'all';
 
-// Format date
-function formatDate(timestamp) {
-  if (!timestamp) return '';
-  const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-}
+    // Format date
+    function formatDate(timestamp) {
+      if (!timestamp) return '';
+      const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
 
-// Render single card
-function renderCard(post) {
-  const cat = CATEGORY_CONFIG[post.category] || { label: 'Post', className: 'cat-tips' };
-  const coverHtml = post.coverImage
-    ? `<img src="${post.coverImage}" alt="${escapeHtml(post.title)}" loading="lazy">`
-    : `<div class="blog-card-placeholder">📝</div>`;
+    // Render single card
+    function renderCard(post) {
+      const cat = CATEGORY_CONFIG[post.category] || { label: 'Post', className: 'cat-tips' };
+      const coverHtml = post.coverImage
+        ? `<img src="${post.coverImage}" alt="${escapeHtml(post.title)}" loading="lazy">`
+        : `<div class="blog-card-placeholder">📝</div>`;
 
-  return `
+      return `
     <a href="/blog/post/${post.slug}" class="blog-card">
       <div class="blog-card-cover">${coverHtml}</div>
       <div class="blog-card-body">
@@ -273,79 +774,81 @@ function renderCard(post) {
       </div>
     </a>
   `;
-}
+    }
 
-// Escape HTML to prevent XSS
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+    // Escape HTML to prevent XSS
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
 
-// Render grid
-function renderGrid(posts) {
-  const grid = document.getElementById('blogGrid');
-  if (!posts || posts.length === 0) {
-    grid.innerHTML = `
+    // Render grid
+    function renderGrid(posts) {
+      const grid = document.getElementById('blogGrid');
+      if (!posts || posts.length === 0) {
+        grid.innerHTML = `
       <div class="state-wrapper">
         <div class="state-icon">📭</div>
         <h3 class="state-title">No posts yet</h3>
         <p class="state-desc">${currentCategory === 'all' ? 'Check back soon for new guides and insights.' : 'No posts in this category yet.'}</p>
       </div>
     `;
-    return;
-  }
-  grid.innerHTML = posts.map(renderCard).join('');
-}
+        return;
+      }
+      grid.innerHTML = posts.map(renderCard).join('');
+    }
 
-// Load posts from Firestore
-async function loadPosts() {
-  try {
-    const postsRef = collection(db, 'blog_posts');
-    const q = query(
-      postsRef,
-      where('published', '==', true),
-      orderBy('publishedAt', 'desc')
-    );
-    const snapshot = await getDocs(q);
-    allPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    applyFilter();
-  } catch (err) {
-    console.error('Failed to load posts:', err);
-    document.getElementById('blogGrid').innerHTML = `
+    // Load posts from Firestore
+    async function loadPosts() {
+      try {
+        const postsRef = collection(db, 'blog_posts');
+        const q = query(
+          postsRef,
+          where('published', '==', true),
+          orderBy('publishedAt', 'desc'),
+          limit(50)
+        );
+        const snapshot = await getDocs(q);
+        allPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        applyFilter();
+      } catch (err) {
+        console.error('Failed to load posts:', err);
+        document.getElementById('blogGrid').innerHTML = `
       <div class="state-wrapper">
         <div class="state-icon">⚠️</div>
         <h3 class="state-title">Unable to load posts</h3>
         <p class="state-desc">Please refresh the page or try again later.</p>
       </div>
     `;
-  }
-}
+      }
+    }
 
-// Apply category filter
-function applyFilter() {
-  const filtered = currentCategory === 'all'
-    ? allPosts
-    : allPosts.filter(p => p.category === currentCategory);
-  renderGrid(filtered);
-}
+    // Apply category filter
+    function applyFilter() {
+      const filtered = currentCategory === 'all'
+        ? allPosts
+        : allPosts.filter(p => p.category === currentCategory);
+      renderGrid(filtered);
+    }
 
-// Filter chip click handler
-document.getElementById('filterBar').addEventListener('click', (e) => {
-  const chip = e.target.closest('.filter-chip');
-  if (!chip) return;
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-  chip.classList.add('active');
-  currentCategory = chip.dataset.category;
-  applyFilter();
-});
+    // Filter chip click handler
+    document.getElementById('filterBar').addEventListener('click', (e) => {
+      const chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentCategory = chip.dataset.category;
+      applyFilter();
+    });
 
-// Init
-loadPosts();
-</script>
+    // Init
+    loadPosts();
+  </script>
 </body>
+
 </html>
