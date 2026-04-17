@@ -9,7 +9,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://helpermate.app">
 <title>HelperMate — Smart Household Management for Singapore</title>
+<link rel="canonical" href="https://helpermate.app/">
 <link rel="icon" type="image/png" href="/images/icon.png">
+<meta property="og:image" content="https://helpermate.app/images/icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HelperMate — Smart Household Management">
+<meta name="twitter:description" content="All-in-one app for Singapore employers and helpers. Schedule, tasks, wallet, MOM compliance.">
+<meta name="twitter:image" content="https://helpermate.app/images/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -416,6 +422,60 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scr
 // Animate on scroll
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
 document.querySelectorAll('.animate-on-scroll').forEach(el=>obs.observe(el));
+</script>
+
+<!-- Structured Data: Organization + WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "HelperMate",
+  "legalName": "TEMFARMING",
+  "url": "https://helpermate.app",
+  "logo": "https://helpermate.app/images/icon.png",
+  "description": "All-in-one household management app for Singapore employers and domestic helpers. Schedule, tasks, wallet, and MOM compliance.",
+  "foundingDate": "2026",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "SG"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "support@helpermate.app",
+    "contactType": "customer support"
+  },
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "HelperMate",
+  "url": "https://helpermate.app",
+  "publisher": {
+    "@type": "Organization",
+    "name": "HelperMate"
+  },
+  "inLanguage": "en-SG"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "HelperMate",
+  "operatingSystem": "ANDROID, IOS",
+  "applicationCategory": "LifestyleApplication",
+  "description": "Smart household management app for Singapore employers and domestic helpers",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SGD"
+  },
+  "installUrl": "https://play.google.com/store/apps/details?id=com.myhelper.my_helper_sg",
+  "aggregateRating": null
+}
 </script>
 </body>
 </html>
