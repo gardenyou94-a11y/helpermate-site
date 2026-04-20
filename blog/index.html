@@ -231,7 +231,7 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button{cur
 <!-- FIREBASE + LOGIC -->
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
-import { getFirestore, collection, query, where, orderBy, getDocs } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+import { getFirestore, collection, query, where, orderBy, limit, getDocs } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 
 // Firebase config — will be populated in Phase 3
 import { firebaseConfig } from '/blog/firebase-config.js';
@@ -314,7 +314,8 @@ async function loadPosts() {
     const q = query(
       postsRef,
       where('published', '==', true),
-      orderBy('publishedAt', 'desc')
+      orderBy('publishedAt', 'desc'),
+      limit(50)
     );
     const snapshot = await getDocs(q);
     allPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
