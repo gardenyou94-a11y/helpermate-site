@@ -100,6 +100,27 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+    <url>
+    <loc>https://helpermate.app/blog/post/helper-interview-questions-checklist-singapore</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+ 
+  <url>
+    <loc>https://helpermate.app/blog/post/helper-food-meals-cost-management-singapore</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+ 
+  <url>
+    <loc>https://helpermate.app/blog/post/teaching-helper-to-cook-guide-singapore</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   
 </urlset>
 
