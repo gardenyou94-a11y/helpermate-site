@@ -142,6 +142,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+    <url>
+    <loc>https://helpermate.app/blog/post/common-mistakes-new-fdw-employers-singapore</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://helpermate.app/blog/post/cctv-guide-home-helper-singapore</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://helpermate.app/blog/post/first-time-fdw-employer-checklist-singapore</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
 
 
